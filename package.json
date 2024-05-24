@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build:production": "nx build --prod"
+    "build:all": "nx run-many --target=build --projects=shell,dashboard,address"
   },
   "private": true,
   "dependencies": {
