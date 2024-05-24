@@ -8,5 +8,5 @@ export const updateLanguage = createAction(
 
 export const selectLanguage = createSelector(
   (state: any) => state.language, // Access the language slice in the state
-  (languageState: LanguageState) => languageState.value // Extract the language property
+  (languageState: LanguageState) => languageState.language // Extract the language property
 );

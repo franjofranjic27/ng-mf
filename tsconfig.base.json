@@ -19,9 +19,7 @@
       "address/Routes": ["apps/address/src/app/remote-entry/entry.routes.ts"],
       "dashboard/Routes": [
         "apps/dashboard/src/app/remote-entry/entry.routes.ts"
-      ],
-      "login/Routes": ["apps/login/src/app/remote-entry/entry.routes.ts"],
-      "todo/Routes": ["apps/todo/src/app/remote-entry/entry.routes.ts"]
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

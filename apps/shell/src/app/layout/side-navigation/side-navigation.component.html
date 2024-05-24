@@ -3,25 +3,24 @@
 </div>
 <ng-container *ngIf="languages$ | async as languages">
   <p-dropdown (onChange)="setLanguage($event)"
-              [ngModel]="language$ | async"
+              [ngModel]="(language$ | async)?.language"
               [options]="languages"
-              dropdownIcon="fas fa-chevron-down"
               appendTo="body">
   </p-dropdown>
 </ng-container>
-<!--<ng-container *ngIf="themes$ | async as themes">-->
-<!--  <p-dropdown (onChange)="setTheme($event)"-->
-<!--              [ngModel]="theme$"-->
-<!--              [options]="themes"-->
-<!--              appendTo="body">-->
-<!--    <ng-template let-selectedItem pTemplate="selectedItem">-->
-<!--      <div class="ml-2">{{selectedItem.label}}</div>-->
-<!--    </ng-template>-->
-<!--    <ng-template let-item pTemplate="item">-->
-<!--      <div>{{item.label}}</div>-->
-<!--    </ng-template>-->
-<!--  </p-dropdown>-->
-<!--</ng-container>-->
+<ng-container *ngIf="themes$ | async as themes">
+  <p-dropdown (onChange)="setTheme($event)"
+              [ngModel]="(theme$ | async)?.theme"
+              [options]="themes"
+              appendTo="body">
+    <ng-template let-selectedItem pTemplate="selectedItem">
+      <div class="ml-2">{{selectedItem.label}}</div>
+    </ng-template>
+    <ng-template let-item pTemplate="item">
+      <div>{{item.label}}</div>
+    </ng-template>
+  </p-dropdown>
+</ng-container>
 
 
 <!--<ng-container>-->

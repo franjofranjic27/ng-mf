@@ -8,12 +8,12 @@ export enum LanguageType {
 }
 
 export interface LanguageState {
-  value: LanguageType;
+  language: LanguageType;
 }
 
-const initialState: LanguageState = { value: LanguageType.de}; // Set initial theme (optional)
+const initialState: LanguageState = { language: LanguageType.de}; // Set initial theme (optional)
 
 export const languageReducer = createReducer(
   initialState,
-  on(updateLanguage, (state, { newLanguage }) => ({ ...state, value: newLanguage }))
+  on(updateLanguage, (state, { newLanguage }) => ({ ...state, language: newLanguage }))
 );

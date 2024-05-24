@@ -1,19 +1,22 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslateService } from "@ngx-translate/core";
-import { DropdownModule } from "primeng/dropdown";
-import { PanelMenuModule } from "primeng/panelmenu";
-import { FormsModule } from "@angular/forms";
-import { LanguageService } from "../../core/state/language/language.service";
-import { concatMap, Observable, of } from "rxjs";
-import { ThemeState, ThemeType } from "../../core/state/theme/theme.reducer";
-import { LanguageState, LanguageType } from "../../core/state/language/language.reducer";
-import { MenuItem } from "primeng/api";
-import { ThemeService } from "../../core/state/theme/theme.service";
-import { select, Store } from "@ngrx/store";
-import { map } from "rxjs/operators";
-import { selectLanguage } from "../../core/state/language/language.actions";
-import { StyleClassModule } from "primeng/styleclass";
+import { TranslateService } from '@ngx-translate/core';
+import { DropdownModule } from 'primeng/dropdown';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { FormsModule } from '@angular/forms';
+import { LanguageService } from '../../core/state/language/language.service';
+import { concatMap, Observable, of } from 'rxjs';
+import { ThemeState, ThemeType } from '../../core/state/theme/theme.reducer';
+import {
+  LanguageState,
+  LanguageType,
+} from '../../core/state/language/language.reducer';
+import { MenuItem } from 'primeng/api';
+import { ThemeService } from '../../core/state/theme/theme.service';
+import { select, Store } from '@ngrx/store';
+import { map } from 'rxjs/operators';
+import { selectLanguage } from '../../core/state/language/language.actions';
+import { StyleClassModule } from 'primeng/styleclass';
 
 @Component({
   selector: 'app-side-navigation',
@@ -52,10 +55,9 @@ export class SideNavigationComponent implements OnInit {
 
   menuItems$!: Observable<MenuItem[]>;
   languages$!: Observable<{ [key: string]: string }[]>;
-  language$!: Observable<LanguageType>;
-  selectedLanguage: LanguageType | null = null; // oder die entsprechenden Typen
+  language$!: Observable<any>;
   themes$!: Observable<{ [key: string]: string }[]>;
-  theme$!: Observable<ThemeType>;
+  theme$!: Observable<any>;
 
   constructor(
     private themeService: ThemeService,
@@ -67,8 +69,8 @@ export class SideNavigationComponent implements OnInit {
 
   ngOnInit(): void {
     this.theme$ = this.themeStore.select('theme');
-    this.language$ = this.languageStore.select('value');
-    this.language$.subscribe(console.log);
+    this.language$ = this.languageStore.select('language');
+    this.theme$ = this.themeStore.select('theme');
 
     this.initMenuItems();
     this.initLanguages();
@@ -104,8 +106,6 @@ export class SideNavigationComponent implements OnInit {
         }));
       })
     );
-
-    this.languages$.subscribe(console.log);
   }
 
   private initThemes(): void {
@@ -113,7 +113,6 @@ export class SideNavigationComponent implements OnInit {
     this.themes$ = this.languageStore.pipe(
       select(selectLanguage), // Get the current language observable
       concatMap((language) => {
-        console.log(language);
         // Translate theme labels based on the selected language
         return of(
           this.THEMES.map((item) => ({
