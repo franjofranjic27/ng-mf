@@ -2,7 +2,9 @@
   "name": "@ng-mf/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build:production": "nx build --prod"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~17.3.0",
