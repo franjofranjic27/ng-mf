@@ -63,8 +63,7 @@
 	},
 	"menu": {
 		"dashboard": "Home",
-		"finances": "Finanzen",
-		"marketing": "Marketing"
+		"address": "Addressen"
 	},
 	"shared": {},
 	"sidebar": {

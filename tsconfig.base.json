@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@ng-mf/data-access-user": ["libs/shared/data-access-user/src/index.ts"],
+      "address/Routes": ["apps/address/src/app/remote-entry/entry.routes.ts"],
       "dashboard/Routes": [
         "apps/dashboard/src/app/remote-entry/entry.routes.ts"
       ],
