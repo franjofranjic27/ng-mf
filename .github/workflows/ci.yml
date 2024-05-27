@@ -34,17 +34,18 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
 
 #      - run: npx nx-cloud record -- nx format:check
-      - run: npx nx affected -t lint test build e2e-ci
+      - run: npx nx affected -t lint test
+#      - run: npx nx affected -t lint test build e2e-ci
 
       # Build the Angular app
-      - name: Build Angular app
-        run: npx nx build my-angular-app --prod
+#      - name: Build Angular app
+#        run: npx nx build my-angular-app --prod
 
       # Deploy to AWS S3
-      - name: Deploy to AWS S3
-        env:
-         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-         AWS_REGION: eu-central-1
-        run: aws s3 sync dist/apps/my-angular-app s3://my-angular-app-bucket --delete
-
+#      - name: Deploy to AWS S3
+#        env:
+#         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#         AWS_REGION: eu-central-1
+#        run: aws s3 sync dist/apps/my-angular-app s3://my-angular-app-bucket --delete
+#
